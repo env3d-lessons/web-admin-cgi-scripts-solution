@@ -16,8 +16,8 @@ know):
 
   - https://www.linkedin.com/learning/learning-linux-command-line-2/the-linux-filesystem?u=57075641
 
-  - The most important directory is /usr/lib/cgi-bin.  If you put an executable file here,
-      it can be called from the web via http://<your server ip>/cgi-bin/<script file name>
+  - The most important directory is `/usr/lib/cgi-bin/`.  If you put an executable file here,
+    it can be called from the web via `http://${your_server_ip}/cgi-bin/<script file name>`
 
   - Put your work inside the `/usr/lib/cgi-bin/web-admin-cgi-scripts/` directory
 
