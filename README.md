@@ -197,8 +197,29 @@ Running from the command line:
 
 You can test it using this url: http://learn.operatoroverload.com/~jmadar/1280/q7.sh 
 
+# Hand-in
 
+If you followed all the instructions above, you would have the following files in the
+`/usr/lib/cgi-bin/web-admin-cgi-scripts/` directory:
 
+```
+/usr/lib/cgi-bin/web-admin-cgi-scripts/
+├── q1.sh
+├── q2.sh
+├── q3.sh
+├── q4.sh
+├── q5.sh
+├── q6.sh
+├── q7.sh
+└── title.basics.tsv
+```
 
+Clone the assignment repo into your ${HOME} directory, then
+execute `pytest` in the `${HOME}/${ASSIGNMENT_REPO}/` to
+check if you got everything correct.
 
-
+When you are satisified, run the following commands to submit:
+   - `git add -A`
+   - `git commit -a -m 'submit'`
+   - `git push`
+   
