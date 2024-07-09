@@ -82,17 +82,121 @@ script will simply make a call to icanhazdadjoke.com and return the result.
 
 # Question 3
 
-Write a script q3.sh that retrieves all titles from the current reddit home page.
+Write a script q3.sh that retrieves all slugs from the current time.com home page but display they as
+titles (i.e. remove all dashes).
+
+You can access the JSON data for time.com at https://time.com/wp-json/wp/v2/posts/?per_page=10&context=embed
+I only want the slugs, not the entire URL.
+
 A couple of things to note:
 
   - To retrieve the data that made up of a reddit page, use the following command:
   
     ```
-    curl -s -H 'user-agent: asdf' https://old.reddit.com/.json | json_pp
+    curl -s https://time.com/wp-json/wp/v2/posts/?per_page=10&context=embed | json_pp
     ```
 
   - A running version of the script can be found at
-    https://learn.operatoroverload.com/~jmadar/1280/q3.sh  
+    https://learn.operatoroverload.com/~jmadar/1280/q3.sh
+
+# Question 4
+
+Just like the command line, you can pass arguments into your script running on a web
+server using the following scheme.  Assuming you have a script called test.sh:
+
+http://<your ip>/cgi-bin/test.sh?arg1
+
+Will pass the string arg1 into your script as $1 variable.
+
+Create a script q4.sh by modifying q3.sh, where users can provide an argument to
+specify how many slugs to show. The script will return all the titles on that
+subreddit.  For example:
+
+http://learn.operatoroverload.com/~jmadar/1280/q4.sh?20 will return 20 slugs from time.com
+
+If no argument is provided, output an error message 
+You can use http://learn.operatoroverload.com/~jmadar/1280/q4.sh to see the
+intended output of your script.
+
+# Question 5
+
+Check out http://learn.operatoroverload.com/~jmadar/1280/q5.sh?dog.  It returns the
+google search result of ‘dog’.  The actual call to google is performed via curl
+within my script! 
+
+To achieve this yourself, your script will need to do the google search on
+behalf of the user. The key observation is that when you do a google search for “dog”,
+the URL actually changed to  https://www.google.ca/search?q=dog 
+
+![images/image6.gif](Google URL query parameter) 
+
+You can prove this by issuing the following curl command on the terminal:
+
+![images/image2.gif](Google curl command-line)
+
+Create a script q5.sh that behaves like
+http://learn.operatoroverload.com/~jmadar/1280/q5.sh, where when provided a
+parameter, it will perform a google search and return the result.
+
+NOTE: since HTML is returned from google, you will need to set the content-type
+to be ‘text/html’ in your script.  Otherwise the browser won’t display the
+search result properly.
+
+So why do this?  When you do a search on google, google will keep track of your
+search history, preferences, etc. by keeping track of your IP, browser login, etc.
+What we are doing here is have your web server do the search on behalf of you.
+This way google doesn’t know who is actually doing the search as all searches will
+appear to come from the web server.  This is the primary idea behind various
+VPN technologies.
+
+# Question 6
+
+Note: getting more challenging
+
+The Internet Movie Database (IMDB) has all their data available for the public
+to download, the dataset explanation is at https://www.imdb.com/interfaces/ and
+the download location can be found at https://datasets.imdbws.com/ 
+
+For this exercise, you’ll first need to download and decompress
+name.basics.tsv.gz and title.basics.tsv.gz files onto your server.
+
+These are “tab separated files” (tab being the delimiter between fields).
+The name.basics.tsv contains the names actors, directors, etc. while
+titles.basics.tsv contains information about a specific title.
+
+Your job is to write a script, q6.sh, that takes in an actor or actress’s name
+as input, and outputs all the movie titles that the actor is known for.  If
+more than one actor matches, a message will display telling the user that the
+script expects only one actor or actress to match.  Take a look at this script
+in action on the command line:
+
+![images/image5.png](q6 command line)
+
+Make sure this script can be called via your web server.  You can test it at
+http://learn.operatoroverload.com/~jmadar/1280/q6.sh
+
+Q7
+WARNING:  This question is a lot of work but worth very little compared to the rest
+of the assignment.  It may not be worth your time and is only here to provide additional
+challenges for those who are ready for it.  Don’t feel bad if you want to skip this!!
+
+q6.sh is a lot of fun, and there are many enhancements that you can make.  For this
+question, first make a copy of your q6.sh and call it q7.sh, then perform the following:
+
+Change the content-type to text/html, and format the output
+in HTML, along with including the actor’s image in the output.  HINT: noticed that the url
+https://www.imdb.com/name/nm0147147/ retrieves information about the actor by it’s id.
+
+Here’s a running version of q7.sh.
+
+![images/image4.png](Q7 Running)
+
+Running from the command line:
+
+![image1.png](Q7 command line)
+
+You can test it using this url: http://learn.operatoroverload.com/~jmadar/1280/q7.sh 
+
 
 
 
