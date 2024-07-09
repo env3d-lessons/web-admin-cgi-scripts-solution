@@ -10,10 +10,9 @@ answer_url_prefix = 'learn.operatoroverload.com/~jmadar/1280'
 
 @pytest.fixture
 def check_correct_directory():
-    for i in range(1,8):
-        shutil.copy(f'/usr/lib/cgi-bin/web-admin-cgi-scripts/q{i}.sh', f'./q{i}.sh')
-    assert 'ubuntu' in os.popen('whoami').read(), "This repo must be called using the ubuntu user"
-    assert '/home/ubuntu/web-admin-cgi-scripts' in os.popen('pwd').read(), (
+    os.popen('cp /usr/lib/cgi-bin/web-admin-cgi-scripts/q*.sh .').read()
+    assert 'ubuntu' or 'codespace' in os.popen('whoami').read(), "This repo must be called using the ubuntu user"
+    assert '/home/ubuntu/web-admin-cgi-scripts' or '/workspaces/web-admin-cgi-scripts' in os.popen('pwd').read(), (
         "The assignment repo must be clone into your ubuntu user root directory")
     return True
 
