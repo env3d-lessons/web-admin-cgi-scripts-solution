@@ -128,11 +128,11 @@ To achieve this yourself, your script will need to do the google search on
 behalf of the user. The key observation is that when you do a google search for “dog”,
 the URL actually changed to  https://www.google.ca/search?q=dog 
 
-![images/image6.gif](Google URL query parameter) 
+![Google URL query parameter](images/image6.gif)
 
 You can prove this by issuing the following curl command on the terminal:
 
-![images/image2.gif](Google curl command-line)
+![Google curl command-line](images/image2.gif)
 
 Create a script q5.sh that behaves like
 http://learn.operatoroverload.com/~jmadar/1280/q5.sh, where when provided a
@@ -170,7 +170,7 @@ more than one actor matches, a message will display telling the user that the
 script expects only one actor or actress to match.  Take a look at this script
 in action on the command line:
 
-![images/image5.png](q6 command line)
+![q6 command line](images/image5.png)
 
 Make sure this script can be called via your web server.  You can test it at
 http://learn.operatoroverload.com/~jmadar/1280/q6.sh
@@ -189,11 +189,11 @@ https://www.imdb.com/name/nm0147147/ retrieves information about the actor by it
 
 Here’s a running version of q7.sh.
 
-![images/image4.png](Q7 Running)
+![Q7 Running](images/image4.png)
 
 Running from the command line:
 
-![image1.png](Q7 command line)
+![Q7 command line](images/image1.png)
 
 You can test it using this url: http://learn.operatoroverload.com/~jmadar/1280/q7.sh 
 
