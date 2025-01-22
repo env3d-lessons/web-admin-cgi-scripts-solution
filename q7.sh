@@ -2,6 +2,7 @@
 
 echo 'content-type: text/html'
 echo
+
 if [[ "$1" == "" ]]
 then
     echo "You need to provide an actor"
