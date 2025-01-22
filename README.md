@@ -121,18 +121,18 @@ intended output of your script.
 # Question 5
 
 Check out http://learn.operatoroverload.com/~jmadar/1280/q5.sh?dog.  It returns the
-google search result of ‘dog’.  The actual call to google is performed via curl
+bing search result of ‘dog’.  The actual call to bing is performed via curl
 within my script! 
 
-To achieve this yourself, your script will need to do the google search on
-behalf of the user. The key observation is that when you do a google search for “dog”,
-the URL actually changed to  https://www.google.ca/search?q=dog 
-
-![Google URL query parameter](images/image6.gif)
+To achieve this yourself, your script will need to do the bing search on
+behalf of the user. The key observation is that you can provide a search
+term as part of the URL as follows https://wwww.bing.com/search?q=${SEARCH_TERM}
 
 You can prove this by issuing the following curl command on the terminal:
 
-![Google curl command-line](images/image2.gif)
+```shell
+$ curl https://wwww.bing.com/search?q=dog
+```
 
 Create a script q5.sh that behaves like
 http://learn.operatoroverload.com/~jmadar/1280/q5.sh, where when provided a
