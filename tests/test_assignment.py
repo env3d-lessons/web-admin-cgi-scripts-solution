@@ -10,14 +10,14 @@ answer_url_prefix = 'learn.operatoroverload.com/~jmadar/1280'
 
 @pytest.fixture(scope="session", autouse=True)
 def global_setup():
+    print("\n[Fixture] Copy all answers to repo")        
     assert 'ubuntu' or 'codespace' in os.popen('whoami').read(), "This repo must be called using the ubuntu user"
     assert '/home/ubuntu/web-admin-cgi-scripts' or '/workspaces/web-admin-cgi-scripts' in os.popen('pwd').read(), (
-        "The assignment repo must be clone into your ubuntu user root directory")    
+        "The assignment repo must be clone into your ubuntu user root directory")
     if 'ubuntu' in os.popen('whoami').read():
-        print("\n[Fixture] Copy all answers to repo")
         os.popen('cp /usr/lib/cgi-bin/web-admin-cgi-scripts/q*.sh .').read()
-        os.popen('cp ./tests/*.tsv .').read()
-        print(os.popen('ls -al').read())
+    os.popen('cp ./tests/*.tsv .').read()
+    print(os.popen('ls -al').read())
     # Example: Connect to a database or start a service
     yield
     print("\n[Fixture] Cleaning up global resources")
