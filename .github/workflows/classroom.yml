@@ -19,7 +19,7 @@ jobs:
       with:
         timeout: 10
         max-score: 16
-        setup-command: apt-get update && apt-get -y install curl wget qrencode
+        setup-command: apt-get update && apt-get -y install curl wget qrencode perl
     - name: Autograding Reporter
       uses: classroom-resources/autograding-grading-reporter@v1
       env:

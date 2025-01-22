@@ -17,6 +17,7 @@ def global_setup():
         print("\n[Fixture] Copy all answers to repo")
         os.popen('cp /usr/lib/cgi-bin/web-admin-cgi-scripts/q*.sh .').read()
         os.popen('cp ./tests/*.tsv .').read()
+        print(os.popen('ls -al').read())
     # Example: Connect to a database or start a service
     yield
     print("\n[Fixture] Cleaning up global resources")
